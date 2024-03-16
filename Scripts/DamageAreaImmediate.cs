@@ -5,26 +5,17 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class DamageDealerArea : MonoBehaviour
+public class DamageAreaImmediate : MonoBehaviour
 {
-    public enum DamageMode
-    {
-        Immediate
-    }
-
-    [SerializeField]
-    private DamageMode _damageMode = DamageMode.Immediate;
-
     private Collider cl;
 
     [SerializeField]
-    [Tooltip("In \"OncePerX\" or \"Immediate\" mode: Damage dealt once\nIn \"Continuous\" mode: Damage dealt per second")]
     public float damageAmount;
 
     [ContextMenu("Damage")]
     public void Damage()
     {
-        Debug.Log("Damage");
+        //Debug.Log("Damage");
         StartCoroutine(DamageCoroutine());
     }
 
@@ -44,7 +35,7 @@ public class DamageDealerArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Damage Trigger");
+        //Debug.Log("Damage Trigger");
 
         if (!other.TryGetComponent(out Health health)) return;
 
